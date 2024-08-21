@@ -1,0 +1,14 @@
+#!/bin/bash
+#SBATCH --job-name=inference_algs_running_time_test
+#SBATCH -o inference-result-%j.txt
+#SBATCH -c 1
+#SBATCH -t 08:00:00
+#SBATCH --mem=128000M
+
+module purge
+module use /$HOME/MyModules
+module load graph-tool
+module load Boost/1.82.0-GCC-12.3.0
+
+cd $HOME/proj/SSBM/
+python run_inference_algs_running_times_test.py
