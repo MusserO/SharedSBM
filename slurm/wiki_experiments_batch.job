@@ -1,0 +1,14 @@
+#!/bin/bash
+#SBATCH --job-name=wiki
+#SBATCH -o wiki-result-%j.txt
+#SBATCH -c 4
+#SBATCH -t 08:00:00
+#SBATCH --mem=256000M
+
+module purge
+module use /$HOME/MyModules
+module load graph-tool
+module load Boost/1.82.0-GCC-12.3.0
+
+cd $HOME/proj/SSBM/
+python run_wiki_experiments.py

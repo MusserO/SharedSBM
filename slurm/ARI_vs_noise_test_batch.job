@@ -1,0 +1,14 @@
+#!/bin/bash
+#SBATCH --job-name=ARI_noise
+#SBATCH -o ARI_noise-result-%j.txt
+#SBATCH -c 1
+#SBATCH -t 08:00:00
+#SBATCH --mem=128000M
+
+module purge
+module use /$HOME/MyModules
+module load graph-tool
+module load Boost/1.82.0-GCC-12.3.0
+
+cd $HOME/proj/SSBM/
+python ARI_vs_noise_test.py
